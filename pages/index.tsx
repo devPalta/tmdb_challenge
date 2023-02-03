@@ -1,16 +1,12 @@
 import React from "react";
-import { Spacer, Flex } from "@chakra-ui/react";
-
-import { Header, Main, Cards, Footer } from "@components";
+import { Flex } from "@chakra-ui/react";
 
 const Home: React.FC = () => {
     return (
         <Flex direction="column" minH="100vh">
-            <Header />
-            <Main />
-            <Cards />
-            <Spacer />
-            <Footer />
+            Home view - display 3 rows <br></br>trending series <br></br>
+            trending movies <br></br>
+            favorite's section
         </Flex>
     );
 };
