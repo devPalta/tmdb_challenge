@@ -1,10 +1,41 @@
-# TMDB_CHALLENGE
+# TMDB KODEAR CHALLENGE
 
-This project was generated with [superplate](https://github.com/pankod/superplate).
+This project is an technical interview challenge to create an a Movie App.
 
-## Getting Started
+This project was generated with boilerplate called [superplate](https://github.com/pankod/superplate), to easy setup of a [NextJs](https://nextjs.org/) and [Typescript](https://www.typescriptlang.org/docs/handbook/intro.html)
+app configuration.
 
-superplate is a Next.js all-in-one project generator. Create your project with the tools you need without spending hours on setting them up.
+superplate is a Next.js all-in-one project generator.
+
+#### Challenge
+
+-   Use [TMDB API](https://www.themoviedb.org/documentation/api).
+
+-   Make the follow views:
+
+    -   Home page
+
+        -   Display some movies/series
+        -   Display fav movies/series
+        -   Search functionalities
+
+    -   Detail page
+        -   Display brief of selected movie/serie
+        -   Fav marker to aproach favorite selection feature
+
+## Pre Requisites to installation
+
+NOTE: you can use NVM to handle & switch between different NodeJS versions. Follow the installation
+steps [here](https://github.com/nvm-sh/nvm#installing-and-updating).
+
+-   npm: `8.11.0`
+-   node: `18.3.0`
+
+## Installation
+
+```bash
+npm install
+```
 
 ## Available Scripts
 
