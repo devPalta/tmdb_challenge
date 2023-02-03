@@ -7,3 +7,9 @@ body {
         "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
         "Noto Color Emoji";
 }
+
+.footer-link-animated {
+    &:hover img {
+        transform: rotate(20deg);
+    }
+}

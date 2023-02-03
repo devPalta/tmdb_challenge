@@ -1,8 +1,10 @@
 import React, { CSSProperties } from "react";
 import Image from "next/image";
-import { Flex, Center } from "@chakra-ui/react";
+import { Flex, Center, useColorModeValue, Text, Box } from "@chakra-ui/react";
 
 export const Footer: React.FC = () => {
+    const AvokadoImg = "/icons/avocado.png";
+
     const iconStyle: CSSProperties = {
         fontSize: 22,
         color: "#fff",
@@ -12,17 +14,33 @@ export const Footer: React.FC = () => {
     return (
         <Center bg="main.100" py={10}>
             <Flex flexDirection="column">
-                <a href="https://github.com/pankod" target="_blank">
-                    <Image
-                        src="/icons/pankod-icon.svg"
-                        alt="pankod"
-                        width="140"
-                        height="28"
-                    />
+                <a
+                    href="https://github.com/devPalta/tmdb_challenge"
+                    target="_blank"
+                    className="footer-link-animated"
+                >
+                    <Box display="flex" alignItems="center" gap={2}>
+                        <Image
+                            src={AvokadoImg}
+                            width={20}
+                            height={20}
+                            alt="AvocadoPalterLogo"
+                        ></Image>
+                        <Text
+                            color={"whiteAlpha.900"}
+                            fontFamily="M PLUS Rounded 1c"
+                            fontWeight="bold"
+                            display="flex"
+                            textAlign="center"
+                            marginBottom={0}
+                        >
+                            devPalta
+                        </Text>
+                    </Box>
                 </a>
-                <Flex mt={5}>
+                <Flex mt={5} justifyContent="center">
                     <a
-                        href="https://github.com/pankod"
+                        href="https://github.com/devPalta/tmdb_challenge"
                         target="_blank"
                         style={iconStyle}
                     >
@@ -34,31 +52,7 @@ export const Footer: React.FC = () => {
                         />
                     </a>
                     <a
-                        href="https://twitter.com/PankodDev"
-                        target="_blank"
-                        style={iconStyle}
-                    >
-                        <Image
-                            src="/icons/twitter-icon.svg"
-                            alt="twitter"
-                            width="28"
-                            height="28"
-                        />
-                    </a>
-                    <a
-                        href="https://www.youtube.com/channel/UCBGOeQkv1XW3ptryLWlQbAQ"
-                        target="_blank"
-                        style={iconStyle}
-                    >
-                        <Image
-                            src="/icons/youtube-icon.svg"
-                            alt="youtube"
-                            width="28"
-                            height="29"
-                        />
-                    </a>
-                    <a
-                        href="https://www.linkedin.com/company/pankod-yazilim-ve-danismanlik/"
+                        href="https://www.linkedin.com/in/walter-luna-7ba08872/"
                         target="_blank"
                         style={iconStyle}
                     >
