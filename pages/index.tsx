@@ -1,6 +1,6 @@
-import React from "react";
-import { Flex } from "@chakra-ui/react";
+import React, { useEffect } from "react";
 import { Section } from "@components/section";
+import { Flex } from "@chakra-ui/react";
 
 const Home: React.FC = () => {
     return (
@@ -8,14 +8,12 @@ const Home: React.FC = () => {
             Home view - display 3 rows <br />
             <br />
             <br />
-            <Section title="My List" data={[{ id: 0, name: "fav element" }]} />
-            <Section
-                title="Trending series"
-                data={[{ id: 0, name: "tv serie element" }]}
-            />
+            <Section title="My List" />
+            <Section title="Trending series" />
             <Section
                 title="trending movies"
-                data={[{ id: 0, name: "movie element" }]}
+                queryKey={"movies"}
+                endpoint={"/tv/popular"}
             />
         </Flex>
     );
