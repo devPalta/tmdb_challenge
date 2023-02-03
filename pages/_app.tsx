@@ -1,11 +1,11 @@
 import React from "react";
 import { AppProps } from "next/app";
 import { ChakraProvider } from "@chakra-ui/react";
-import theme from "@definitions/chakra/theme";
-import "@styles/global.scss";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Hydrate } from "react-query/hydration";
 import { Header, Footer } from "@components";
+import theme from "@definitions/chakra/theme";
+import "@styles/global.scss";
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
     const queryClient = new QueryClient();

@@ -4,10 +4,10 @@ import Image from "next/image";
 export const Logo: React.FC = () => {
     return (
         <Image
-            src="/icons/nextjs-icon.svg"
+            src="/icons/tmdb_logo.svg"
             alt="nextjs"
-            width="96"
-            height="58"
+            width="500"
+            height="40"
         />
     );
 };
