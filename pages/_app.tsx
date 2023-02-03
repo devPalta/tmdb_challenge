@@ -1,6 +1,6 @@
 import React from "react";
 import { AppProps } from "next/app";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, Flex } from "@chakra-ui/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Hydrate } from "react-query/hydration";
 import { Header, Footer } from "@components";
@@ -14,7 +14,9 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
             <QueryClientProvider client={queryClient}>
                 <Hydrate state={pageProps.dehydratedState}>
                     <Header />
-                    <Component {...pageProps} />
+                    <Flex margin={5}>
+                        <Component {...pageProps} />
+                    </Flex>
                     <Footer />
                 </Hydrate>
             </QueryClientProvider>
