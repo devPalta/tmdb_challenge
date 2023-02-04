@@ -11,7 +11,7 @@ const Home: React.FC = () => {
             <Section title="My List" />
             <Section
                 title="Trending series"
-                queryKey={"tv"}
+                queryKey={"tvs"}
                 endpoint={"/tv/popular"}
             />
             <Section

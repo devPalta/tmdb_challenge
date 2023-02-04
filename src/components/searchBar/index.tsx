@@ -51,7 +51,9 @@ export const SearchBar: React.FC = () => {
             // isLoading={loading}
 
             components={{ DropdownIndicator }}
-            onChange={(e) => e && router.push("/detail")}
+            onChange={(e) => {
+                e && router.push(`/detail/${e.media_type}/${e.id}`);
+            }}
             isClearable
         ></Select>
     );
