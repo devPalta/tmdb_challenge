@@ -7,6 +7,7 @@ const Movie: React.FC = () => {
     const { data, isLoading } = useQuery(["movie"], () =>
         ApiService.get(`/movie/${router.query.id}`).then((res) => res.data),
     );
+    // TODO  DATA IS NOT REFRESHING AS EXPECTED
     return (
         <>
             holi movie id: {router.query.id} name:{data?.title}
