@@ -1,6 +1,6 @@
 import React from "react";
 import { ApiService } from "src/api/apiService";
-import { dehydrate, QueryClient, useQuery } from "react-query";
+import { dehydrate, QueryClient, useQuery } from "@tanstack/react-query";
 import { Heading, Flex, SimpleGrid, Skeleton } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import { INTERNALS } from "next/dist/server/web/spec-extension/request";
