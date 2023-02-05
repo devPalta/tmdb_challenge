@@ -1,11 +1,11 @@
 import React from "react";
+import Image from "next/image";
 
 export const Logo: React.FC = () => {
     return (
-        <img
-            title="tmdb_logo"
+        <Image
             src="/icons/tmdb_logo.svg"
-            alt="tmdb_logo"
+            alt="nextjs"
             width="500"
             height="40"
         />

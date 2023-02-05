@@ -1,6 +1,6 @@
 import React, { CSSProperties } from "react";
 import Image from "next/image";
-import { Flex, Center, useColorModeValue, Text, Box } from "@chakra-ui/react";
+import { Flex, Center, Text, Box } from "@chakra-ui/react";
 
 export const Footer: React.FC = () => {
     const AvokadoImg = "/icons/avocado.png";
@@ -12,7 +12,7 @@ export const Footer: React.FC = () => {
         marginLeft: "0.25rem",
     };
     return (
-        <Center bg="main.100" py={10}>
+        <Center bg="main.100" py={10} flex={1} minWidth="100%">
             <Flex flexDirection="column">
                 <a
                     href="https://github.com/devPalta/tmdb_challenge"

@@ -1,13 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Section } from "@components/section";
 import { Flex } from "@chakra-ui/react";
+import { DiscoverSection } from "@components/discover";
 
 const Home: React.FC = () => {
     return (
         <Flex direction="column" minH="100vh" flex={1}>
-            Home view - display 3 rows <br />
-            <br />
-            <br />
+            <DiscoverSection />
             <Section title="My List" />
             <Section
                 title="Trending series"
@@ -15,7 +14,7 @@ const Home: React.FC = () => {
                 endpoint={"/tv/popular"}
             />
             <Section
-                title="trending movies"
+                title="Trending movies"
                 queryKey={"movies"}
                 endpoint={"/movie/popular"}
             />
