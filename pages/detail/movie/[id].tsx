@@ -12,7 +12,7 @@ import {
     Text,
 } from "@chakra-ui/react";
 import { FavToogler } from "@components/favoriteToggle";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, dehydrate, QueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { ApiService } from "src/api/apiService";
@@ -20,22 +20,23 @@ import { useFavItemsStore, useSelections } from "src/store";
 
 const Movie: React.FC = () => {
     const router = useRouter();
-    const { lastSelected, addItem } = useSelections();
-    const { data, refetch } = useQuery(["movie"], () =>
-        ApiService.get(`/movie/${router.query.id ?? lastSelected()}`).then(
-            (res) => res.data,
-        ),
+    const { addItem } = useSelections();
+    const { data, refetch } = useQuery(
+        ["movie"],
+        () =>
+            ApiService.get(`/movie/${router.query.id}`).then((res) => res.data),
+        {
+            onSuccess: (data) => addItem(data),
+        },
     );
-    useEffect(() => {
-        router.query.id && refetch();
-    }, [router.query.id]);
-    useEffect(() => {
-        data && addItem(data);
-    }, [data]);
+
     const { favoriteItemsObject } = useFavItemsStore();
     useEffect(() => {
         return;
     }, [favoriteItemsObject]);
+    useEffect(() => {
+        router.query.id && refetch();
+    }, [router.query.id]);
     return (
         <>
             <Flex minHeight="100vh" flexDir="column">
@@ -134,3 +135,21 @@ const Movie: React.FC = () => {
 };
 
 export default Movie;
+
+export const getServerSideProps = async (ctx: { params: { id: any } }) => {
+    const { id } = ctx.params;
+
+    const queryClient = new QueryClient();
+
+    // prefetch data on the server
+    await queryClient.fetchQuery(["movie", id], () =>
+        ApiService.get(`/movie/${id}`).then((res) => res.data),
+    );
+
+    return {
+        props: {
+            // dehydrate query cache
+            dehydratedState: dehydrate(queryClient),
+        },
+    };
+};

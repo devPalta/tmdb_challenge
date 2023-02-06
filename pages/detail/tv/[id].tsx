@@ -12,7 +12,7 @@ import {
     Text,
 } from "@chakra-ui/react";
 import { FavToogler } from "@components/favoriteToggle";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, dehydrate, QueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { ApiService } from "src/api/apiService";
@@ -20,23 +20,24 @@ import { useFavItemsStore, useSelections } from "src/store";
 const Tv: React.FC = () => {
     const router = useRouter();
     const { lastSelected, addItem } = useSelections();
-    const { data, refetch } = useQuery(["tv"], () =>
-        ApiService.get(
-            `/tv/${router?.query?.id ? router?.query?.id : lastSelected()}`,
-        ).then((res) => res.data),
+    const { data, refetch } = useQuery(
+        ["tv"],
+        () =>
+            ApiService.get(
+                `/tv/${router?.query?.id ? router?.query?.id : lastSelected()}`,
+            ).then((res) => res.data),
+        {
+            onSuccess: (data) => addItem(data),
+        },
     );
-    useEffect(() => {
-        router?.query?.id && refetch();
-    }, [router.query.id]);
-
-    useEffect(() => {
-        data && addItem(data);
-    }, [data]);
 
     const { favoriteItemsObject } = useFavItemsStore();
     useEffect(() => {
         return;
-    }, [favoriteItemsObject]);
+    }, [favoriteItemsObject, data]);
+    useEffect(() => {
+        router.query.id && refetch();
+    }, [router.query.id]);
     return (
         <>
             <Flex minHeight="100vh" flexDir="column">
@@ -146,3 +147,21 @@ const Tv: React.FC = () => {
 };
 
 export default Tv;
+
+export const getServerSideProps = async (ctx: { params: { id: any } }) => {
+    const { id } = ctx.params;
+
+    const queryClient = new QueryClient();
+
+    // prefetch data on the server
+    await queryClient.fetchQuery(["tv", id], () =>
+        ApiService.get(`/tv/${id}`).then((res) => res.data),
+    );
+
+    return {
+        props: {
+            // dehydrate query cache
+            dehydratedState: dehydrate(queryClient),
+        },
+    };
+};
